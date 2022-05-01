@@ -32,5 +32,10 @@ namespace Airline.UserRegister.Models
         [DataType(DataType.Date)]
         public DateTime DateOfBirth { set; get; }
 
+        public string CreatedBy { set; get; }
+        public DateTime CreatedDate { set; get; }
+        public string Updatedby { set; get; }
+        public DateTime UpdatedDate { set; get; }
+
     }
 }

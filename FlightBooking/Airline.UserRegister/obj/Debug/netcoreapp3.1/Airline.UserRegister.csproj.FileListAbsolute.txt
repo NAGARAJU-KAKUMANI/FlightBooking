@@ -1,4 +1,3 @@
-D:\NEW\FlightBooking-N\FlightBooking\Airline.UserRegister\obj\Debug\netcoreapp3.1\Airline.UserRegister.csproj.AssemblyReference.cache
 D:\NEW\FlightBooking-N\FlightBooking\Airline.UserRegister\obj\Debug\netcoreapp3.1\Airline.UserRegister.GeneratedMSBuildEditorConfig.editorconfig
 D:\NEW\FlightBooking-N\FlightBooking\Airline.UserRegister\obj\Debug\netcoreapp3.1\Airline.UserRegister.AssemblyInfoInputs.cache
 D:\NEW\FlightBooking-N\FlightBooking\Airline.UserRegister\obj\Debug\netcoreapp3.1\Airline.UserRegister.AssemblyInfo.cs
