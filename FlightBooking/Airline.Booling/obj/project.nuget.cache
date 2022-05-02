@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "kXZwdhkOpyon96TkqEh0lhOG8E93QBvcegel064lp2rHHaAUWATpDYcndOresomHXFWRAk5uHBN86LLw9Tio9A==",
+  "dgSpecHash": "RfhmAQlgws20hOqYjEUvBs8U32LWo107DPoa4uIPdpBhCWZTLbC2JpwEGGWhTbQDWdd5CENi/pAyvMeigl/dSw==",
   "success": true,
   "projectFilePath": "D:\\NEW\\FlightBooking-N\\FlightBooking\\Airline.Booling\\Airline.Booking.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kakum\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\kakum\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.24\\microsoft.aspnetcore.authentication.jwtbearer.3.1.24.nupkg.sha512",
     "C:\\Users\\kakum\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\kakum\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\kakum\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",

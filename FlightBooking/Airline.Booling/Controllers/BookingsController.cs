@@ -1,5 +1,6 @@
 ﻿using Airline.Booking.Models;
 using Airline.Booking.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -24,6 +25,7 @@ namespace Airline.Booking.Controllers
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
+        [Authorize]
         [HttpPost]
         [Route("insert-booking-details")]
         public IActionResult InsertUserDetails([FromBody] List<Bookings> bookings)
@@ -106,13 +108,14 @@ namespace Airline.Booking.Controllers
 
         }
 
+        [Authorize]
         [HttpGet]
         [Route("get-all-Tickets")]
         public IActionResult GetAllUsers()
         {
             try
             {
-                var users = _userRepository.GetBookings();
+                var users = _userRepository.GetBookings().ToList();
                 return new OkObjectResult(users);
             }
             catch

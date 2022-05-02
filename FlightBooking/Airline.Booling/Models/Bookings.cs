@@ -17,7 +17,7 @@ namespace Airline.Booking.Models
         public string FromPlace { set; get; }
         public string ToPlace { set; get; }
         public DateTime BoardingTime { set; get; }
-        public string EmailID { set; get; }
+       // public string EmailID { set; get; }
         public string UserName { set; get; }
         public string passportNumber { set; get; }
         public string Age { set; get; }

@@ -61,3 +61,4 @@ D:\NEW\FlightBooking-N\FlightBooking\Airline.UserRegister\obj\Debug\netcoreapp3.
 D:\NEW\FlightBooking-N\FlightBooking\Airline.UserRegister\obj\Debug\netcoreapp3.1\Airline.UserRegister.dll
 D:\NEW\FlightBooking-N\FlightBooking\Airline.UserRegister\obj\Debug\netcoreapp3.1\Airline.UserRegister.pdb
 D:\NEW\FlightBooking-N\FlightBooking\Airline.UserRegister\obj\Debug\netcoreapp3.1\Airline.UserRegister.genruntimeconfig.cache
+D:\NEW\FlightBooking-N\FlightBooking\Airline.UserRegister\obj\Debug\netcoreapp3.1\Airline.UserRegister.csproj.AssemblyReference.cache
