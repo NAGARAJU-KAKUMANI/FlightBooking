@@ -26,20 +26,30 @@ namespace Airline.Inventory.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Address")
+                    b.Property<string>("ActiveStatus")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
                     b.Property<string>("ContactNumber")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreatedBy")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
@@ -55,18 +65,22 @@ namespace Airline.Inventory.Migrations
                         new
                         {
                             AirlineId = 1,
+                            ActiveStatus = "Y",
                             Address = "Hyderabad",
                             ContactNumber = "9948757854",
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedBy = "Admin",
+                            CreatedDate = new DateTime(2022, 5, 2, 18, 49, 45, 582, DateTimeKind.Local).AddTicks(6351),
                             Name = "Cargo",
                             UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             AirlineId = 2,
+                            ActiveStatus = "Y",
                             Address = "Banglore",
                             ContactNumber = "9948077376",
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedBy = "Admin",
+                            CreatedDate = new DateTime(2022, 5, 2, 18, 49, 45, 582, DateTimeKind.Local).AddTicks(6603),
                             Name = "Indigo",
                             UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
@@ -83,16 +97,21 @@ namespace Airline.Inventory.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("CreatedBy")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("FlightName")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("FlightNumber")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
@@ -109,7 +128,8 @@ namespace Airline.Inventory.Migrations
                         {
                             FlightID = 1,
                             AirLineId = 1,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedBy = "Admin",
+                            CreatedDate = new DateTime(2022, 5, 2, 18, 49, 45, 582, DateTimeKind.Local).AddTicks(7619),
                             FlightName = "Enfield",
                             FlightNumber = "V12345",
                             UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -118,7 +138,8 @@ namespace Airline.Inventory.Migrations
                         {
                             FlightID = 2,
                             AirLineId = 2,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedBy = "Admin",
+                            CreatedDate = new DateTime(2022, 5, 2, 18, 49, 45, 582, DateTimeKind.Local).AddTicks(7830),
                             FlightName = "FZ-MR",
                             FlightNumber = "VF12345",
                             UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -127,7 +148,7 @@ namespace Airline.Inventory.Migrations
 
             modelBuilder.Entity("Airline.Inventory.Models.Inventorys", b =>
                 {
-                    b.Property<int>("INventoryId")
+                    b.Property<int>("InventoryId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -139,6 +160,7 @@ namespace Airline.Inventory.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("CreatedBy")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
@@ -147,13 +169,17 @@ namespace Airline.Inventory.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("FlightNumber")
-                        .HasColumnType("int");
+                    b.Property<string>("FlightNumber")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("FromPlace")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Instrument")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Meal")
@@ -171,10 +197,11 @@ namespace Airline.Inventory.Migrations
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("TicketCost")
-                        .HasColumnType("int");
+                    b.Property<decimal>("TicketCost")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("ToPlace")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedDate")
@@ -183,9 +210,32 @@ namespace Airline.Inventory.Migrations
                     b.Property<string>("Updatedby")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("INventoryId");
+                    b.HasKey("InventoryId");
 
-                    b.ToTable("tblInventories");
+                    b.ToTable("tblInventoy");
+
+                    b.HasData(
+                        new
+                        {
+                            InventoryId = 1,
+                            AirLineId = 1,
+                            BClassCount = 50,
+                            CreatedBy = "Admin",
+                            CreatedDate = new DateTime(2022, 5, 2, 18, 49, 45, 581, DateTimeKind.Local).AddTicks(5076),
+                            EndDate = new DateTime(2022, 5, 12, 18, 49, 45, 581, DateTimeKind.Local).AddTicks(3673),
+                            FlightNumber = "V12345",
+                            FromPlace = "BASAR",
+                            Instrument = "Insur",
+                            Meal = 1,
+                            NBClassCount = 100,
+                            Rows = 5,
+                            ScheduledDays = 20,
+                            StartDate = new DateTime(2022, 5, 7, 18, 49, 45, 580, DateTimeKind.Local).AddTicks(2669),
+                            TicketCost = 2000m,
+                            ToPlace = "HYDERABAD",
+                            UpdatedDate = new DateTime(2022, 5, 2, 18, 49, 45, 581, DateTimeKind.Local).AddTicks(5460),
+                            Updatedby = "Admin"
+                        });
                 });
 #pragma warning restore 612, 618
         }

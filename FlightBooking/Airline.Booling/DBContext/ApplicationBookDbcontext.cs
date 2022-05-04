@@ -18,7 +18,29 @@ namespace Airline.Booking.DBContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            modelBuilder.Entity<Bookings>().HasData(
+              new Bookings
+              {
+                  TicketID = "TICK585755",
+                  BookingID = "BCK125458",
+                  FlightNumber = "V12345",
+                  DateOfJourney = DateTime.Now.AddDays(10),
+                  FromPlace = "Hyderabd",
+                  ToPlace = "BASR",
+                  BoardingTime = DateTime.Now.AddDays(10),
+                  EmailID = "kakumani15@gmail.com",
+                  UserName = "NAGARAJU",
+                  passportNumber = "V655585",
+                  Age = 25,
+                  SeatNumber = 2,
+                  Status = 1,
+                  Statusstr = "TicketBooked",
+                  CreatedBy = "NAGARAJU",
+                  CreatedDate = DateTime.Now,
+                  Updatedby="NAGARAJU",
+                  UpdatedDate=DateTime.Now
+              }
+              );
         }
 
     }

@@ -1,6 +1,54 @@
 {
   "Routes": [
     {
+      "DownstreamPathTemplate": "/api/admins/check-admin-details",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 49675
+        }
+      ],
+      "UpstreamPathTemplate": "/api/gatway/admins/check-admin-details",
+      "UpstreamHttpMethod": [ "Get" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Bookings/cancel-ticket/{TicketID}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 62554
+        }
+      ],
+      "UpstreamPathTemplate": "/api/gatway/Bookings/cancel-ticket/{TicketID}",
+      "UpstreamHttpMethod": [ "Put" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Bookings/pnr-ticket/{TicketID}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 62554
+        }
+      ],
+      "UpstreamPathTemplate": "/api/gatway/Bookings/pnr-ticket/{TicketID}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
+        "AllowedScopes": []
+      }
+    },
+    {
       "DownstreamPathTemplate": "/api/Bookings/get-all-Tickets",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
@@ -32,6 +80,72 @@
         "AllowedScopes": []
       }
     },
+
+    {
+      "DownstreamPathTemplate": "/api/Inventory/search-inventories",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 11308
+        }
+      ],
+      "UpstreamPathTemplate": "/api/gatway/Inventory/search-inventories",
+      "UpstreamHttpMethod": [ "Get" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Inventory/PlanInventory",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 11308
+        }
+      ],
+      "UpstreamPathTemplate": "/api/gatway/Inventory/PlanInventory",
+      "UpstreamHttpMethod": [ "Post" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/user/get-all-users",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 48865
+        }
+      ],
+      "UpstreamPathTemplate": "/api/gatway/user/get-all-users",
+      "UpstreamHttpMethod": [ "Get" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/user/insert-user-details",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 48865
+        }
+      ],
+      "UpstreamPathTemplate": "/api/gatway/user/insert-user-details",
+      "UpstreamHttpMethod": [ "Post" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
+        "AllowedScopes": []
+      }
+    },
+
     {
       "DownstreamPathTemplate": "/api/users/authenticate",
       "DownstreamScheme": "http",

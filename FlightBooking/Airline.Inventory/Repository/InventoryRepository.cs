@@ -21,12 +21,12 @@ namespace Airline.Inventory.Repository
 
         public void PlanInventory(Inventorys inventory)
         {
-            _inventoryDbContext.tblInventories.Add(inventory);
+            _inventoryDbContext.tblInventoy.Add(inventory);
         }
 
         public List<Inventorys> ShowInventories()
         {
-            return _inventoryDbContext.tblInventories.ToList();
+            return _inventoryDbContext.tblInventoy.ToList();
         }
     }
 }

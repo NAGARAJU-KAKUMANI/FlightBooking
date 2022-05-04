@@ -61,4 +61,5 @@ D:\NEW\FlightBooking-N\FlightBooking\Airline.Inventory\obj\Debug\netcoreapp3.1\A
 D:\NEW\FlightBooking-N\FlightBooking\Airline.Inventory\obj\Debug\netcoreapp3.1\Airline.Inventory.dll
 D:\NEW\FlightBooking-N\FlightBooking\Airline.Inventory\obj\Debug\netcoreapp3.1\Airline.Inventory.pdb
 D:\NEW\FlightBooking-N\FlightBooking\Airline.Inventory\obj\Debug\netcoreapp3.1\Airline.Inventory.genruntimeconfig.cache
+D:\NEW\FlightBooking-N\FlightBooking\Airline.Inventory\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\NEW\FlightBooking-N\FlightBooking\Airline.Inventory\obj\Debug\netcoreapp3.1\Airline.Inventory.csproj.AssemblyReference.cache

@@ -1,5 +1,6 @@
 ﻿using Airline.UserRegister.Models;
 using Airline.UserRegister.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,6 +11,7 @@ using System.Transactions;
 
 namespace Airline.UserRegister.Controllers
 {
+    [Authorize]
     [Route("api/user")]
     [ApiController]
     public class UserController : ControllerBase
@@ -30,6 +32,11 @@ namespace Airline.UserRegister.Controllers
         {
             try
             {
+                // Validate modelState
+                if (!ModelState.IsValid)
+                {
+                    return UnprocessableEntity(ModelState);
+                }
                     using (var scope = new TransactionScope())
                     {
                         _userRepository.insert(user);
@@ -37,11 +44,15 @@ namespace Airline.UserRegister.Controllers
                         return Accepted();
                     }
             }
-            catch
+            catch(Exception ex)
             {
                 return BadRequest();
             }
         }
+        /// <summary>
+        /// Get All the Users
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("get-all-users")]
         public IActionResult GetAllUsers()

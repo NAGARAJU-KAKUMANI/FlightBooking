@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/Inventory/GetAllInventories",
+      "launchUrl": "api/Inventory/search-inventories",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

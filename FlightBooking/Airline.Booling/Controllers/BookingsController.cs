@@ -11,6 +11,7 @@ using System.Transactions;
 
 namespace Airline.Booking.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class BookingsController : ControllerBase
@@ -25,7 +26,7 @@ namespace Airline.Booking.Controllers
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        [Authorize]
+       
         [HttpPost]
         [Route("insert-booking-details")]
         public IActionResult InsertUserDetails([FromBody] List<Bookings> bookings)
@@ -55,6 +56,10 @@ namespace Airline.Booking.Controllers
             }
         }
 
+        /// <summary>
+        /// Generate UniQue TiketID
+        /// </summary>
+        /// <returns></returns>
         public string GenerateticketID()
         {
             int count = _userRepository.GetBookings().ToList().Count();
@@ -81,6 +86,10 @@ namespace Airline.Booking.Controllers
             }
            
         }
+        /// <summary>
+        /// Genarate unique Booking iD
+        /// </summary>
+        /// <returns></returns>
         public string GenerateBookingID()
         {
             int count = _userRepository.GetBookings().ToList().Count();
@@ -108,7 +117,10 @@ namespace Airline.Booking.Controllers
 
         }
 
-        [Authorize]
+       /// <summary>
+       /// Get All User Tickets
+       /// </summary>
+       /// <returns></returns>
         [HttpGet]
         [Route("get-all-Tickets")]
         public IActionResult GetAllUsers()
@@ -124,6 +136,11 @@ namespace Airline.Booking.Controllers
             }
         }
 
+        /// <summary>
+        /// Cancel Ticket
+        /// </summary>
+        /// <param name="TicketID"></param>
+        /// <returns></returns>
         [HttpPut]
         [Route("cancel-ticket/{TicketID}")]
         public IActionResult CancelTicket(string TicketID)
@@ -149,7 +166,11 @@ namespace Airline.Booking.Controllers
                 return BadRequest();
             }
         }
-
+        /// <summary>
+        /// PNR STATUS Check
+        /// </summary>
+        /// <param name="TicketID"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("pnr-ticket/{TicketID}")]
         public IActionResult GetpnrTicket(string TicketID)

@@ -8,6 +8,7 @@ namespace Airline.UserRegister.Models
 {
     public class User
     {
+        [Key]
         public int UserID { set; get; }
         [Required]
         [StringLength(50, ErrorMessage = "Length Should no greater than 50 char")]

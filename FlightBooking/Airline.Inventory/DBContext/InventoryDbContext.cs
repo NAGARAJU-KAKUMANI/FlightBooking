@@ -13,45 +13,79 @@ namespace Airline.Inventory.DBContext
         {
 
         }
-        public DbSet<Inventorys> tblInventories { get; set; }
+        public DbSet<Inventorys> tblInventoy { get; set; }
         public DbSet<AirLine> tblAirLine { get; set; }
         public DbSet<Flight> tblFlight { get; set; }
 
         protected override void OnModelCreating(ModelBuilder model)
         {
+            model.Entity<Inventorys>().HasData(
+            new Inventorys
+            {
+                InventoryId = 1,
+                FlightNumber = "V12345",
+                AirLineId = 1,
+                FromPlace = "BASAR",
+                ToPlace = "HYDERABAD",
+                StartDate = DateTime.Now.AddDays(5),
+                EndDate = DateTime.Now.AddDays(10),
+                ScheduledDays = 20,
+                Instrument = "Insur",
+                BClassCount = 50,
+                NBClassCount = 100,
+                TicketCost = 2000,
+                Rows = 5,
+                Meal = 1,
+                CreatedBy = "Admin",
+                CreatedDate = DateTime.Now,
+                Updatedby = "Admin",
+                UpdatedDate = DateTime.Now
+            }
+            );
             model.Entity<AirLine>().HasData(
                new AirLine
                {
                    AirlineId = 1,
                    Name = "Cargo",
                    Address = "Hyderabad",
-                   ContactNumber="9948757854"
+                   ContactNumber = "9948757854",
+                   ActiveStatus = "Y",
+                   CreatedBy = "Admin",
+                   CreatedDate = DateTime.Now
                },
                 new AirLine
                 {
                     AirlineId = 2,
                     Name = "Indigo",
                     Address = "Banglore",
-                    ContactNumber = "9948077376"
+                    ContactNumber = "9948077376",
+                     ActiveStatus = "Y",
+                    CreatedBy = "Admin",
+                    CreatedDate = DateTime.Now
                 }
                );
             model.Entity<Flight>().HasData(
                new Flight
                {
-                   FlightID=1,
-                  FlightNumber="V12345",
-                  AirLineId=1,
-                  FlightName="Enfield"
+                   FlightID = 1,
+                   FlightNumber = "V12345",
+                   AirLineId = 1,
+                   FlightName = "Enfield",
+                   CreatedBy = "Admin",
+                   CreatedDate = DateTime.Now
 
                },
                 new Flight
                 {
-                    FlightID=2,
+                    FlightID = 2,
                     FlightNumber = "VF12345",
                     AirLineId = 2,
-                    FlightName = "FZ-MR"
+                    FlightName = "FZ-MR",
+                    CreatedBy = "Admin",
+                    CreatedDate = DateTime.Now
                 }
-               );
+               ); 
+          
 
         }
     }

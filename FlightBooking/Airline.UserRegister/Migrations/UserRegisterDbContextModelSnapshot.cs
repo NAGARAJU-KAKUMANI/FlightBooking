@@ -72,6 +72,23 @@ namespace Airline.UserRegister.Migrations
                     b.HasKey("UserID");
 
                     b.ToTable("UserRegistor");
+
+                    b.HasData(
+                        new
+                        {
+                            UserID = 1,
+                            Address = "BASAR",
+                            CreatedBy = "Admin",
+                            CreatedDate = new DateTime(2022, 5, 2, 19, 20, 51, 62, DateTimeKind.Local).AddTicks(5249),
+                            DateOfBirth = new DateTime(2022, 5, 2, 19, 20, 51, 61, DateTimeKind.Local).AddTicks(4754),
+                            Email = "kakumani@gmail.com",
+                            FirstName = "NAGARAJU",
+                            LastName = "KAKUMANI",
+                            Password = "Pass@word",
+                            UpdatedDate = new DateTime(2022, 5, 2, 19, 20, 51, 62, DateTimeKind.Local).AddTicks(5678),
+                            Updatedby = "Admin",
+                            mobile = "9666491876"
+                        });
                 });
 #pragma warning restore 612, 618
         }
