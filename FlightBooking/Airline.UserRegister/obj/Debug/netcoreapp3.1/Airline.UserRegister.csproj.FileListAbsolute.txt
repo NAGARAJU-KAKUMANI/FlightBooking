@@ -63,3 +63,8 @@ D:\NEW\FlightBooking-N\FlightBooking\Airline.UserRegister\obj\Debug\netcoreapp3.
 D:\NEW\FlightBooking-N\FlightBooking\Airline.UserRegister\obj\Debug\netcoreapp3.1\Airline.UserRegister.genruntimeconfig.cache
 D:\NEW\FlightBooking-N\FlightBooking\Airline.UserRegister\obj\Debug\netcoreapp3.1\Airline.UserRegister.csproj.AssemblyReference.cache
 D:\NEW\FlightBooking-N\FlightBooking\Airline.UserRegister\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\NEW\FlightBooking-N\FlightBooking\Airline.UserRegister\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+D:\NEW\FlightBooking-N\FlightBooking\Airline.UserRegister\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+D:\NEW\FlightBooking-N\FlightBooking\Airline.UserRegister\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\NEW\FlightBooking-N\FlightBooking\Airline.UserRegister\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\NEW\FlightBooking-N\FlightBooking\Airline.UserRegister\obj\Debug\netcoreapp3.1\Airline.UserRegister.MvcApplicationPartsAssemblyInfo.cs

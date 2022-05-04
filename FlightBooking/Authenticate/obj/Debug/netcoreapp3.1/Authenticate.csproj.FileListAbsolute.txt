@@ -28,3 +28,8 @@ D:\NEW\FlightBooking-N\FlightBooking\Authenticate\bin\Debug\netcoreapp3.1\Micros
 D:\NEW\FlightBooking-N\FlightBooking\Authenticate\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\NEW\FlightBooking-N\FlightBooking\Authenticate\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 D:\NEW\FlightBooking-N\FlightBooking\Authenticate\obj\Debug\netcoreapp3.1\Authenticate.csproj.AssemblyReference.cache
+D:\NEW\FlightBooking-N\FlightBooking\Authenticate\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+D:\NEW\FlightBooking-N\FlightBooking\Authenticate\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+D:\NEW\FlightBooking-N\FlightBooking\Authenticate\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\NEW\FlightBooking-N\FlightBooking\Authenticate\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\NEW\FlightBooking-N\FlightBooking\Authenticate\obj\Debug\netcoreapp3.1\Authenticate.MvcApplicationPartsAssemblyInfo.cs

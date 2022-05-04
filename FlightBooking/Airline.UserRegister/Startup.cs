@@ -52,6 +52,7 @@ namespace Airline.UserRegister
                     IssuerSigningKey = new SymmetricSecurityKey(key)
                 };
             });
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,7 +62,8 @@ namespace Airline.UserRegister
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseSwagger();
+            app.UseSwaggerUI();
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
