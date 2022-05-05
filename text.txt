@@ -1,1 +1,3 @@
 NEW
+.\zookeeper-server-start.bat C:\kafka-bin\config\Zookeeper.properties
+kafka-server-start.bat C:\kafka-bin\config\server.properties
