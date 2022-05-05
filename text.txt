@@ -36,3 +36,7 @@ kafka-topics --zookeeper localhost:2181 --list
 <ItemGroup>
 <PackageReference Include="Confluent.Kafka" Version="1.4.0" />
 </ItemGroup>
+
+"producer": {
+"bootsrapservers": "localhost:9092"
+}
