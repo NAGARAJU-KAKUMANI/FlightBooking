@@ -1,3 +1,7 @@
 NEW
+---Zookeper Statrt
 .\zookeeper-server-start.bat C:\kafka-bin\config\Zookeeper.properties
+---Kafka Server Start
 kafka-server-start.bat C:\kafka-bin\config\server.properties
+
+kafka-topics --bootstrap-server 127.0.0.1:9092 --topic first_topic --create --partitions 3 --replication-factor 1
