@@ -8,6 +8,7 @@ namespace Airline.Booking.Services
 {
     public interface IBookingRepository
     {
+        IEnumerable<Inventorys> GetInventorys();
         void Insert(Bookings bookings);
 
         IEnumerable<Bookings> GetBookings();

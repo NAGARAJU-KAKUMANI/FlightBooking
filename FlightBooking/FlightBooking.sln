@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGateWay", "ApiGateWay\Ap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticate", "Authenticate\Authenticate.csproj", "{5086A5B4-2923-41D8-97E5-A298345BE156}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Airline.Admin", "Airline.Admin\Airline.Admin.csproj", "{DDED52EA-90B5-4FA2-B97C-D82FD8D9E33F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Airline.Admin", "Airline.Admin\Airline.Admin.csproj", "{DDED52EA-90B5-4FA2-B97C-D82FD8D9E33F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

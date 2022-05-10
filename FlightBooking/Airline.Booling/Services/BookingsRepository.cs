@@ -21,6 +21,16 @@ namespace Airline.Booking.Services
             return _bookingDbContext.tblBookings.ToList();
         }
 
+        //public IEnumerable<Inventorys> GetInventorys()
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        public IEnumerable<Inventorys> GetInventorys()
+        {
+            return _bookingDbContext.tblInventoy.ToList();
+        }
+
         public void Insert(Bookings bookings)
         {
             _bookingDbContext.tblBookings.Add(bookings);

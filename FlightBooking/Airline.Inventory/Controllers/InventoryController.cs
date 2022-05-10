@@ -67,13 +67,13 @@ namespace Airline.Inventory.Controllers
                 inventorys.ToPlace = inventoryviewModel.ToPlace;
                 inventorys.StartDate = inventoryviewModel.StartDate;
                 inventorys.EndDate = inventoryviewModel.EndDate;
-                inventorys.ScheduledDays = inventoryviewModel.ScheduledDays;
+                inventorys.ScheduledDays =(flightAvailable?) inventoryviewModel.ScheduledDays;
                 inventorys.Instrument = inventoryviewModel.Instrument;
                 inventorys.BClassCount = inventoryviewModel.BClassCount;
                 inventorys.NBClassCount = inventoryviewModel.NBClassCount;
                 inventorys.TicketCost = inventoryviewModel.TicketCost;
                 inventorys.Rows = inventoryviewModel.Rows;
-                inventorys.Meal = inventoryviewModel.Meal;
+                inventorys.Meal =(Meals?) inventoryviewModel.Meal;
                 inventorys.CreatedBy = "Admin";
                 inventorys.CreatedDate = DateTime.Now;
                 inventorys.Updatedby = "Admin";

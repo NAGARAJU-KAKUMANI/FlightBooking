@@ -29,19 +29,23 @@ namespace Airline.Inventory.DBContext
                 ToPlace = "HYDERABAD",
                 StartDate = DateTime.Now.AddDays(5),
                 EndDate = DateTime.Now.AddDays(10),
-                ScheduledDays = 20,
+                startTime = "10.00 AM",
+                EndTime = "12.00 PM",
+                ScheduledDays = flightAvailable.Daily,
                 Instrument = "Insur",
                 BClassCount = 50,
+                BclassAvailCount = 50,
                 NBClassCount = 100,
+                NBclassAvailableCount = 100,
                 TicketCost = 2000,
                 Rows = 5,
-                Meal = 1,
+                Meal = Meals.NonVeg,
                 CreatedBy = "Admin",
                 CreatedDate = DateTime.Now,
-                Updatedby = "Admin",
-                UpdatedDate = DateTime.Now
+                //Updatedby = "Admin",
+                //UpdatedDate = DateTime.Now
             }
-            );
+            ); 
             model.Entity<AirLine>().HasData(
                new AirLine
                {

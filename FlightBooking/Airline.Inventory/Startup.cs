@@ -1,5 +1,8 @@
+using Airline.Inventory.Consumer;
 using Airline.Inventory.DBContext;
+using Airline.Inventory.Events;
 using Airline.Inventory.Repository;
+using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -12,6 +15,8 @@ using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -54,8 +59,49 @@ namespace Airline.Inventory
             });
             services.AddSwaggerGen();
 
-        }
+            //services.AddMassTransit(x =>
+            //{
+            //    x.UsingRabbitMq((context, cfg) => cfg.ConfigureEndpoints(context));
+            //    x.AddRider(rider =>
+            //    {
+            //        rider.AddConsumer<BookingConsumer>();
+            //        rider.UsingKafka((context, k) =>
+            //        {
+            //            k.Host("localhost:9092");
+            //            k.TopicEndpoint<Bookingcofirm>(nameof(Bookingcofirm), GetUniqueName(nameof(Bookingcofirm)), e =>
+            //            {
+            //                e.CheckpointInterval = TimeSpan.FromSeconds(10);
+            //                e.ConfigureConsumer<BookingConsumer>(context);
+            //            });
+            //        });
+            //    });
+            //});
+            //services.AddMassTransitHostedService();
+            services.AddMassTransit(x =>
+            {
+                x.UsingRabbitMq((context, cfg) => cfg.ConfigureEndpoints(context));
+                x.AddRider(rider =>
+                {
+                    rider.AddConsumer<BookingEventConsumer>();
+                    rider.UsingKafka((context, k) =>
+                    {
+                        k.Host("localhost:9092");
+                        k.TopicEndpoint<BookingEvent>(nameof(BookingEvent), GetUniqueName(nameof(BookingEvent)), e => {
+                            e.CheckpointInterval = TimeSpan.FromSeconds(10);
+                            e.ConfigureConsumer<BookingEventConsumer>(context);
+                        });
+                    });
+                });
+            });
+            services.AddMassTransitHostedService();
 
+        }
+        private string GetUniqueName(string eventname)
+        {
+            string hostname = Dns.GetHostName();
+            string classAssembly = Assembly.GetCallingAssembly().GetName().Name;
+            return $"{hostname}.{classAssembly}.{eventname}";
+        }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

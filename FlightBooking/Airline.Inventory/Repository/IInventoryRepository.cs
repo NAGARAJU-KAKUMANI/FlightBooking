@@ -9,7 +9,9 @@ namespace Airline.Inventory.Repository
     public interface IInventoryRepository
     {
         void PlanInventory(Inventorys inventory);
-        List<Inventorys> ShowInventories();
+        IEnumerable<Inventorys> ShowInventories();
         void CancelInventory(int id);
+
+        void updateBookingCount(Inventorys inventorys);
     }
 }

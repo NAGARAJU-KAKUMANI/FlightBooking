@@ -1,5 +1,6 @@
 ﻿using Airline.Inventory.DBContext;
 using Airline.Inventory.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,9 +25,15 @@ namespace Airline.Inventory.Repository
             _inventoryDbContext.tblInventoy.Add(inventory);
         }
 
-        public List<Inventorys> ShowInventories()
+        public IEnumerable<Inventorys> ShowInventories()
         {
             return _inventoryDbContext.tblInventoy.ToList();
+        }
+
+        public void updateBookingCount(Inventorys inventorys)
+        {
+            _inventoryDbContext.Entry(inventorys).State = EntityState.Modified;
+            _inventoryDbContext.SaveChanges();
         }
     }
 }

@@ -15,6 +15,7 @@ namespace Airline.Booking.DBContext
         }
 
         public DbSet<Bookings> tblBookings { set; get; }
+        public  DbSet<Inventorys> tblInventoy { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -27,7 +28,7 @@ namespace Airline.Booking.DBContext
                   DateOfJourney = DateTime.Now.AddDays(10),
                   FromPlace = "Hyderabd",
                   ToPlace = "BASR",
-                  BoardingTime = DateTime.Now.AddDays(10),
+                  BoardingTime = "10.00 AM",
                   EmailID = "kakumani15@gmail.com",
                   UserName = "NAGARAJU",
                   passportNumber = "V655585",
@@ -38,7 +39,8 @@ namespace Airline.Booking.DBContext
                   CreatedBy = "NAGARAJU",
                   CreatedDate = DateTime.Now,
                   Updatedby="NAGARAJU",
-                  UpdatedDate=DateTime.Now
+                  UpdatedDate=DateTime.Now,
+                  Seattype=Seattype.Businessclass
               }
               );
         }

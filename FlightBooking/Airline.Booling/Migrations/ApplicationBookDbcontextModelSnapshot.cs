@@ -27,8 +27,9 @@ namespace Airline.Booking.Migrations
                     b.Property<int>("Age")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("BoardingTime")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("BoardingTime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("BookingID")
                         .IsRequired()
@@ -59,6 +60,9 @@ namespace Airline.Booking.Migrations
                     b.Property<int>("SeatNumber")
                         .HasColumnType("int");
 
+                    b.Property<int>("Seattype")
+                        .HasColumnType("int");
+
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
@@ -70,7 +74,7 @@ namespace Airline.Booking.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UpdatedDate")
+                    b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Updatedby")
@@ -95,23 +99,107 @@ namespace Airline.Booking.Migrations
                         {
                             TicketID = "TICK585755",
                             Age = 25,
-                            BoardingTime = new DateTime(2022, 5, 12, 19, 11, 43, 982, DateTimeKind.Local).AddTicks(1173),
+                            BoardingTime = "10.00 AM",
                             BookingID = "BCK125458",
                             CreatedBy = "NAGARAJU",
-                            CreatedDate = new DateTime(2022, 5, 2, 19, 11, 43, 982, DateTimeKind.Local).AddTicks(2242),
-                            DateOfJourney = new DateTime(2022, 5, 12, 19, 11, 43, 981, DateTimeKind.Local).AddTicks(863),
+                            CreatedDate = new DateTime(2022, 5, 9, 20, 56, 40, 489, DateTimeKind.Local).AddTicks(7328),
+                            DateOfJourney = new DateTime(2022, 5, 19, 20, 56, 40, 488, DateTimeKind.Local).AddTicks(8624),
                             EmailID = "kakumani15@gmail.com",
                             FlightNumber = "V12345",
                             FromPlace = "Hyderabd",
                             SeatNumber = 2,
+                            Seattype = 0,
                             Status = 1,
                             Statusstr = "TicketBooked",
                             ToPlace = "BASR",
-                            UpdatedDate = new DateTime(2022, 5, 2, 19, 11, 43, 982, DateTimeKind.Local).AddTicks(2519),
+                            UpdatedDate = new DateTime(2022, 5, 9, 20, 56, 40, 489, DateTimeKind.Local).AddTicks(7604),
                             Updatedby = "NAGARAJU",
                             UserName = "NAGARAJU",
                             passportNumber = "V655585"
                         });
+                });
+
+            modelBuilder.Entity("Airline.Booking.Models.Inventorys", b =>
+                {
+                    b.Property<int>("InventoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AirLineId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BClassCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BclassAvailCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("EndTime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FlightNumber")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("FromPlace")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Instrument")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Meal")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NBClassCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NBclassAvailableCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Rows")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ScheduledDays")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("TicketCost")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("ToPlace")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("startTime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("InventoryId");
+
+                    b.ToTable("tblInventoy");
                 });
 #pragma warning restore 612, 618
         }

@@ -25,6 +25,6 @@ namespace Airline.Inventory.Models
         [Required]
         public DateTime CreatedDate { set; get; }
         public string Updatedby { set; get; }
-        public DateTime UpdatedDate { set; get; }
+        public DateTime? UpdatedDate { set; get; }
     }
 }

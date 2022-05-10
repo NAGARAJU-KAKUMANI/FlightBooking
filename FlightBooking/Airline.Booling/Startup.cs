@@ -1,5 +1,9 @@
 using Airline.Booking.DBContext;
+using Airline.Booking.Events;
 using Airline.Booking.Services;
+
+using MassTransit;
+using MassTransit.KafkaIntegration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -32,6 +36,7 @@ namespace Airline.Booling
             services.AddControllers();
             services.AddDbContext<ApplicationBookDbcontext>(o => o.UseSqlServer(Configuration.GetConnectionString("FlightBookingDb")));
             services.AddTransient<IBookingRepository, BookingsRepository>();
+          
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = "TestKey";
@@ -53,6 +58,35 @@ namespace Airline.Booling
                 };
             });
             services.AddSwaggerGen();
+
+            services.AddMassTransit(x =>
+            {
+                x.UsingRabbitMq((context, cfg) => cfg.ConfigureEndpoints(context));
+                x.AddRider(rider =>
+                {
+                    rider.AddProducer<BookingEvent>(nameof(BookingEvent));
+                    rider.UsingKafka((context, k) =>
+                    {
+                        k.Host("localhost:9092");
+                    });
+                });
+            });
+            services.AddMassTransitHostedService();
+
+            //services.AddMassTransit(x =>
+            //{
+            //    x.UsingRabbitMq((context, cfg) => cfg.ConfigureEndpoints(context));
+            //    x.AddRider(rider =>
+            //    {
+            //        rider.AddProducer<Bookingconfim>(nameof(Bookingconfim));
+            //        rider.UsingKafka((context, k) =>
+            //        {
+            //            k.Host("localhost:9092");
+            //        });
+            //    });
+            //});
+            //services.AddMassTransitHostedService();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

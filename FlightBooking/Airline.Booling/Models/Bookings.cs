@@ -23,7 +23,7 @@ namespace Airline.Booking.Models
         [Required]
         public string ToPlace { set; get; }
         [Required]
-        public DateTime BoardingTime { set; get; }
+        public string BoardingTime { set; get; }
         [Required]
         [EmailAddress]
         public string EmailID { set; get; }
@@ -46,6 +46,8 @@ namespace Airline.Booking.Models
         [Required]
         public DateTime CreatedDate { set; get; }
         public string Updatedby { set; get; }
-        public DateTime UpdatedDate { set; get; }
+        public DateTime? UpdatedDate { set; get; }
+        [Required]
+        public Seattype? Seattype { set; get; }
     }
 }
