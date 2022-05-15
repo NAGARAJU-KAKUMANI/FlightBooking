@@ -34,7 +34,19 @@ namespace Authenticate.Controllers
         [Route("authenticate")]
         public IActionResult Authenticate(Users userdata)
         {
-            var token = iJWTManager.Authenticate(userdata);
+            var token = iJWTManager.Authenticate(userdata,false);
+            if (token == null)
+            {
+                return Unauthorized();
+            }
+            return Ok(token);
+        }
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("registor")]
+        public IActionResult registor(Users userdata)
+        {
+            var token = iJWTManager.Authenticate(userdata, true);
             if (token == null)
             {
                 return Unauthorized();

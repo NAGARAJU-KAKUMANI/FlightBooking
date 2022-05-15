@@ -9,6 +9,7 @@ namespace Airline.Inventory.ViewModel
     public class SerachViewModel
     {
         [Required]
+        [DataType(DataType.Date)]
         public DateTime FromDate { set; get; }
         [Required]
         public string FromPlace { set; get; }

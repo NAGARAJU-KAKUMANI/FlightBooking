@@ -26,7 +26,15 @@ namespace Airline.Booking.ViewModels
         [Required]
         public Seattype? Seattype { set; get; }
         [Required]
-        public IEnumerable<UsersViewModel> usersViewModels { set; get; }
-      
+        [StringLength(50)]
+        public string UserName { set; get; }
+        [Required]
+        [StringLength(20)]
+        public string passportNumber { set; get; }
+        [Required]
+        public int Age { set; get; }
+        //[Required]
+        //public List<UsersViewModel> BookingUsers { set; get; }
+
     }
 }

@@ -16,5 +16,7 @@ namespace Airline.Inventory.Events
         public int NumberOfTickets { set; get; }
 
         public int Settype { set; get; }
+
+        public int tickettype { set; get; }
     }
 }

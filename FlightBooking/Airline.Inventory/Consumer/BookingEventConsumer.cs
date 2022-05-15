@@ -27,20 +27,38 @@ namespace Airline.Inventory.Consumer
                                                                     a.FlightNumber == context.Message.FlightNumber
                                                                    && a.startTime == context.Message.startTime
                                                                   ).FirstOrDefault();
-                if (context.Message.Settype == 0)
+                if (context.Message.tickettype == 0)
                 {
-                    inventory.BclassAvailCount = inventory.BclassAvailCount - context.Message.NumberOfTickets;
-                    inventory.Updatedby = "user";
-                    inventory.UpdatedDate = DateTime.Now;
+                    if (context.Message.Settype == 1)
+                    {
+                        inventory.BclassAvailCount = inventory.BclassAvailCount - context.Message.NumberOfTickets;
+                        inventory.Updatedby = "user";
+                        inventory.UpdatedDate = DateTime.Now;
+                    }
+                    else if (context.Message.Settype == 2)
+                    {
+                        inventory.BclassAvailCount = inventory.NBclassAvailableCount - context.Message.NumberOfTickets;
+                        inventory.Updatedby = "user";
+                        inventory.UpdatedDate = DateTime.Now;
+                    }
                 }
-                else if (context.Message.Settype == 1)
+                else if (context.Message.tickettype == 1)
                 {
-                    inventory.BclassAvailCount = inventory.NBclassAvailableCount - context.Message.NumberOfTickets;
-                    inventory.Updatedby = "user";
-                    inventory.UpdatedDate = DateTime.Now;
+                    if (context.Message.Settype == 1)
+                    {
+                        inventory.BclassAvailCount = inventory.BclassAvailCount +1;
+                        inventory.Updatedby = "user";
+                        inventory.UpdatedDate = DateTime.Now;
+                    }
+                    else if (context.Message.Settype == 2)
+                    {
+                        inventory.BclassAvailCount = inventory.NBclassAvailableCount +1;
+                        inventory.Updatedby = "user";
+                        inventory.UpdatedDate = DateTime.Now;
+                    }
                 }
-                _inventory.updateBookingCount(inventory);
-
+                    _inventory.updateBookingCount(inventory);
+                
                 return Task.CompletedTask;
             }
             catch(Exception ex)

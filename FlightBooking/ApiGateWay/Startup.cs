@@ -53,6 +53,7 @@ namespace ApiGateWay
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseOcelot().Wait();
+           
         }
     }
 }

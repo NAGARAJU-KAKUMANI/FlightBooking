@@ -9,5 +9,8 @@ namespace Authenticate.ViewModels
     {
         public string Token { get; set; }
         public string RefreshToken { get; set; }
+        public int Role { set; get; }
+        public string Email { get; set; }
+        public int UserID { set; get; }
     }
 }

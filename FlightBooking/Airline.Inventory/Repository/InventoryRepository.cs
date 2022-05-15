@@ -20,9 +20,15 @@ namespace Airline.Inventory.Repository
 
         }
 
+        public IEnumerable<AirLine> GetAirline()
+        {
+            return _inventoryDbContext.tblAirLine.ToList();
+        }
+
         public void PlanInventory(Inventorys inventory)
         {
             _inventoryDbContext.tblInventoy.Add(inventory);
+            _inventoryDbContext.SaveChanges();
         }
 
         public IEnumerable<Inventorys> ShowInventories()

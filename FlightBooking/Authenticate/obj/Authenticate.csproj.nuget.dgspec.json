@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\NEW\\FlightBooking-N\\FlightBooking\\Authenticate\\Authenticate.csproj": {}
+    "D:\\NEW\\FlightBooking-N\\FlightBooking-N\\FlightBooking\\Authenticate\\Authenticate.csproj": {}
   },
   "projects": {
-    "D:\\NEW\\FlightBooking-N\\FlightBooking\\Authenticate\\Authenticate.csproj": {
+    "D:\\NEW\\FlightBooking-N\\FlightBooking-N\\FlightBooking\\Authenticate\\Authenticate.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\NEW\\FlightBooking-N\\FlightBooking\\Authenticate\\Authenticate.csproj",
+        "projectUniqueName": "D:\\NEW\\FlightBooking-N\\FlightBooking-N\\FlightBooking\\Authenticate\\Authenticate.csproj",
         "projectName": "Authenticate",
-        "projectPath": "D:\\NEW\\FlightBooking-N\\FlightBooking\\Authenticate\\Authenticate.csproj",
+        "projectPath": "D:\\NEW\\FlightBooking-N\\FlightBooking-N\\FlightBooking\\Authenticate\\Authenticate.csproj",
         "packagesPath": "C:\\Users\\kakum\\.nuget\\packages\\",
-        "outputPath": "D:\\NEW\\FlightBooking-N\\FlightBooking\\Authenticate\\obj\\",
+        "outputPath": "D:\\NEW\\FlightBooking-N\\FlightBooking-N\\FlightBooking\\Authenticate\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\kakum\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -44,6 +44,20 @@
               "target": "Package",
               "version": "[3.1.24, )"
             },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
             "Swashbuckle.AspNetCore.Swagger": {
               "target": "Package",
               "version": "[6.3.1, )"
@@ -75,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.407\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
         }
       }
     }

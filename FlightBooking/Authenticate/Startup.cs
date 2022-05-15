@@ -1,8 +1,10 @@
+using Authenticate.DBContext;
 using Authenticate.Interfaces;
 using Authenticate.ViewModels;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -27,8 +29,9 @@ namespace Authenticate
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton<IJWTManagerRepository, JWTManagerRepository>();
+            services.AddTransient<IJWTManagerRepository, JWTManagerRepository>();
             services.AddSwaggerGen();
+            services.AddDbContext<UsersApplicationDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("FlightBookingDb")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,7 +46,7 @@ namespace Authenticate
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
-
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

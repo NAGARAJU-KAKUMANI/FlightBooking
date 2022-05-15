@@ -7,7 +7,7 @@ namespace Airline.Booking.Models
 {
     public enum Seattype
     {
-        Businessclass,
-        Normal
+        Businessclass=1,
+        Normal=2
     }
 }

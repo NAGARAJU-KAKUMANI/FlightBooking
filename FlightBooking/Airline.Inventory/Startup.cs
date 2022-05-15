@@ -94,7 +94,7 @@ namespace Airline.Inventory
                 });
             });
             services.AddMassTransitHostedService();
-
+           
         }
         private string GetUniqueName(string eventname)
         {
@@ -112,6 +112,7 @@ namespace Airline.Inventory
             app.UseSwagger();
             app.UseSwaggerUI();
             app.UseRouting();
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseAuthentication();
             app.UseAuthorization();
 

@@ -5971,11 +5971,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\NEW\\FlightBooking-N\\FlightBooking\\Airline.UserRegister\\Airline.UserRegister.csproj",
+      "projectUniqueName": "D:\\NEW\\FlightBooking-N\\FlightBooking-N\\FlightBooking\\Airline.UserRegister\\Airline.UserRegister.csproj",
       "projectName": "Airline.UserRegister",
-      "projectPath": "D:\\NEW\\FlightBooking-N\\FlightBooking\\Airline.UserRegister\\Airline.UserRegister.csproj",
+      "projectPath": "D:\\NEW\\FlightBooking-N\\FlightBooking-N\\FlightBooking\\Airline.UserRegister\\Airline.UserRegister.csproj",
       "packagesPath": "C:\\Users\\kakum\\.nuget\\packages\\",
-      "outputPath": "D:\\NEW\\FlightBooking-N\\FlightBooking\\Airline.UserRegister\\obj\\",
+      "outputPath": "D:\\NEW\\FlightBooking-N\\FlightBooking-N\\FlightBooking\\Airline.UserRegister\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\kakum\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6053,7 +6053,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.407\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
       }
     }
   }

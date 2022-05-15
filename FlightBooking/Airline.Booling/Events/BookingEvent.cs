@@ -15,5 +15,6 @@ namespace Airline.Booking.Events
         public string startTime { set; get; }
         public int NumberOfTickets { set; get; }
         public int Settype { set; get; }
+        public int tickettype { set; get; }
     }
 }

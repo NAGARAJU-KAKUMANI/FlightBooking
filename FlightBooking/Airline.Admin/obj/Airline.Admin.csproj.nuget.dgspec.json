@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\NEW\\FlightBooking-N\\FlightBooking\\Airline.Admin\\Airline.Admin.csproj": {}
+    "D:\\NEW\\FlightBooking-N\\FlightBooking-N\\FlightBooking\\Airline.Admin\\Airline.Admin.csproj": {}
   },
   "projects": {
-    "D:\\NEW\\FlightBooking-N\\FlightBooking\\Airline.Admin\\Airline.Admin.csproj": {
+    "D:\\NEW\\FlightBooking-N\\FlightBooking-N\\FlightBooking\\Airline.Admin\\Airline.Admin.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\NEW\\FlightBooking-N\\FlightBooking\\Airline.Admin\\Airline.Admin.csproj",
+        "projectUniqueName": "D:\\NEW\\FlightBooking-N\\FlightBooking-N\\FlightBooking\\Airline.Admin\\Airline.Admin.csproj",
         "projectName": "Airline.Admin",
-        "projectPath": "D:\\NEW\\FlightBooking-N\\FlightBooking\\Airline.Admin\\Airline.Admin.csproj",
+        "projectPath": "D:\\NEW\\FlightBooking-N\\FlightBooking-N\\FlightBooking\\Airline.Admin\\Airline.Admin.csproj",
         "packagesPath": "C:\\Users\\kakum\\.nuget\\packages\\",
-        "outputPath": "D:\\NEW\\FlightBooking-N\\FlightBooking\\Airline.Admin\\obj\\",
+        "outputPath": "D:\\NEW\\FlightBooking-N\\FlightBooking-N\\FlightBooking\\Airline.Admin\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\kakum\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -89,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.407\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
         }
       }
     }

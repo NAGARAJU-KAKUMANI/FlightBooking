@@ -23,18 +23,28 @@ namespace Airline.Inventory.ViewModel
         [DataType(DataType.Date)]
         public DateTime EndDate { get; set; }
         [Required]
+        public string startTime { set; get; }
+        [Required]
+        public string EndTime { set; get; }
+        [Required]
         public int ScheduledDays { get; set; }
         [Required]
         public string Instrument { get; set; }
         [Required]
         public int BClassCount { get; set; }
         [Required]
+        public int BclassAvailCount { set; get; }
+        [Required]
         public int NBClassCount { get; set; }
+        [Required]
+        public int NBclassAvailableCount { set; get; }
         [Required]
         public decimal TicketCost { get; set; }
         [Required]
         public int Rows { get; set; }
         [Required]
         public int Meal { get; set; }
+        [Required]
+        public string CreatedBy { set; get; }
     }
 }

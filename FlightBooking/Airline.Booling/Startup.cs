@@ -1,7 +1,6 @@
 using Airline.Booking.DBContext;
 using Airline.Booking.Events;
 using Airline.Booking.Services;
-
 using MassTransit;
 using MassTransit.KafkaIntegration;
 using Microsoft.AspNetCore.Builder;
@@ -101,7 +100,7 @@ namespace Airline.Booling
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
-
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

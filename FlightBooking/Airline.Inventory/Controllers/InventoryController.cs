@@ -12,7 +12,7 @@ using System.Transactions;
 
 namespace Airline.Inventory.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class InventoryController : ControllerBase
@@ -27,7 +27,7 @@ namespace Airline.Inventory.Controllers
         /// </summary>
         /// <param name="serachViewModel"></param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpPost]
         [Route("search-inventories")]
         public IActionResult GetAllInventories([FromBody] SerachViewModel serachViewModel)
         {
@@ -38,23 +38,75 @@ namespace Airline.Inventory.Controllers
                 {
                     return UnprocessableEntity(ModelState);
                 }
+                IEnumerable<Inventorys> inventories = _inventory.ShowInventories().ToList();
+                IEnumerable<AirLine> Airline = _inventory.GetAirline().ToList();
+                var flights = (from p in inventories
+                              join e in Airline
+                              on p.AirLineId equals e.AirlineId
+                              where p.StartDate >= serachViewModel.FromDate &&
+                                                               p.FromPlace.ToLower().Contains(serachViewModel.FromPlace.ToLower()) &&
+                                                             p.ToPlace.ToLower().Contains(serachViewModel.Toplace.ToLower())
+                              select new
+                              {
+                                  p.FlightNumber,
+                                  e.Name,
+                                  p.FromPlace,
+                                  p.ToPlace,
+                                  p.BclassAvailCount,
+                                  p.NBclassAvailableCount,
+                                  p.TicketCost,
+                                  p.startTime,
+                                  p.StartDate,
+                                  p.EndDate,
+                                  Meal = Enum.GetName(typeof(Meals), p.Meal)
+                              }).ToList();
 
-                return Ok(_inventory.ShowInventories().Where(a => a.StartDate >= serachViewModel.FromDate &&
-                                                               a.FromPlace.ToLower().Contains(serachViewModel.FromPlace.ToLower()) &&
-                                                             a.ToPlace.ToLower().Contains(serachViewModel.Toplace.ToLower())));
+                return Ok(flights);
             }
-            catch
+            catch(Exception ex)
             {
                 return BadRequest();
             }    
         }
+        [Authorize]
+        [HttpGet]
+        [Route("get-all-inventories")]
+        public IActionResult GetAllInventorie()
+        {
+            try
+            {
 
+                var posts = _inventory.ShowInventories().Select(p => new
+                {
+                    p.FlightNumber,
+                    p.AirLineId,
+                    p.FromPlace,
+                    p.ToPlace,
+                    p.BclassAvailCount,
+                    p.NBclassAvailableCount,
+                    p.TicketCost,
+                    p.startTime
+                });
+
+                return Ok(posts);
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
+        [Authorize]
         [HttpPost]
         [Route("PlanInventory")]
         public IActionResult AddNewInventory([FromBody] InventoryViewModel inventoryviewModel)
         {
             try
             {
+              IEnumerable< Inventorys> inventorys1=  _inventory.ShowInventories().ToList().Where(a => a.FlightNumber == inventoryviewModel.FlightNumber);
+                if(inventorys1.Count()>0)
+                {
+                    return Accepted(new Status { Message = "Flight Number Already Exist" });
+                }
                 ////Validate modelState
                 if (!ModelState.IsValid)
                 {
@@ -74,19 +126,23 @@ namespace Airline.Inventory.Controllers
                 inventorys.TicketCost = inventoryviewModel.TicketCost;
                 inventorys.Rows = inventoryviewModel.Rows;
                 inventorys.Meal =(Meals?) inventoryviewModel.Meal;
-                inventorys.CreatedBy = "Admin";
+                inventorys.CreatedBy = inventoryviewModel.CreatedBy;
                 inventorys.CreatedDate = DateTime.Now;
                 inventorys.Updatedby = "Admin";
                 inventorys.UpdatedDate = DateTime.Now;
 
+                inventorys.EndTime = inventoryviewModel.EndTime;
+                inventorys.startTime = inventoryviewModel.startTime;
+                inventorys.BclassAvailCount = inventoryviewModel.BClassCount;
+                inventorys.NBclassAvailableCount = inventoryviewModel.NBClassCount;
                 using (var scope = new TransactionScope())
                 {
                     _inventory.PlanInventory(inventorys);
                     scope.Complete();
-                    return Accepted();
+                    return Accepted(new Status { Message = "Flight Details Added Successfully" });
                 }
             }
-            catch
+            catch(Exception ex)
             {
                 return BadRequest();
             }

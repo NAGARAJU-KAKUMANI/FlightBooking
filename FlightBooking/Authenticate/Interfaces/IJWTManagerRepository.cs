@@ -8,6 +8,6 @@ namespace Authenticate.Interfaces
 {
     public interface IJWTManagerRepository
     {
-        Tokens Authenticate(Users users);
+        Tokens Authenticate(Users users, bool value);
     }
 }

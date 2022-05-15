@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zsBz+K72rfQN5d5JmRlUYLWaYQzfe83kUKyD9061bkBLpnebC/BdIXwxQD62vZEPiuYYknliX2mEpp7SyaJm8A==",
+  "dgSpecHash": "TSkiDi7Y1QtVc+f3NMXaqeOWdS3mw6zp7hCNq8QDrQbgJILl8WcPKE4vI1O9/KKgaSFbDsOmf0D/6oS68E2SeA==",
   "success": true,
-  "projectFilePath": "D:\\NEW\\FlightBooking-N\\FlightBooking\\ApiGateWay\\ApiGateWay.csproj",
+  "projectFilePath": "D:\\NEW\\FlightBooking-N\\FlightBooking-N\\FlightBooking\\ApiGateWay\\ApiGateWay.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kakum\\.nuget\\packages\\fluentvalidation\\8.6.2\\fluentvalidation.8.6.2.nupkg.sha512",
     "C:\\Users\\kakum\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.24\\microsoft.aspnetcore.authentication.jwtbearer.3.1.24.nupkg.sha512",

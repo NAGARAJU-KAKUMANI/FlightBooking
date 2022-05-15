@@ -31,27 +31,26 @@ namespace Airline.Booking.Controllers
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-       
+        [Authorize]
         [HttpPost]
         [Route("insert-booking-details")]
         public async Task<IActionResult> InsertUserDetails([FromBody] BookingViewModel bookingViewModel)
         {
             try
             {
-                IEnumerable<UsersViewModel> _usersViewModels = bookingViewModel.usersViewModels;
-                int setCount = _usersViewModels.Count();
+                //IEnumerable<UsersViewModel> _usersViewModels = bookingViewModel.BookingUsers;
+                //int setCount = _usersViewModels.Count();
                 Inventorys _inventorys=null;
                 Bookings bookings;
-                if ((Seattype)bookingViewModel.Seattype == 0)
+                if (Convert.ToInt32(bookingViewModel.Seattype)==1)
                 {
                     _inventorys = _userRepository.GetInventorys().ToList()
-                        .Where(o => o.FlightNumber == bookingViewModel.FlightNumber && o.BclassAvailCount>=setCount).FirstOrDefault();
+                        .Where(o => o.FlightNumber == bookingViewModel.FlightNumber && o.BclassAvailCount>=1 && o.StartDate >= bookingViewModel.DateOfJourney ).FirstOrDefault();
                 }
-                else if ((Seattype)bookingViewModel.Seattype == 0)
+                else if (Convert.ToInt32(bookingViewModel.Seattype) == 2)
                 {
                     _inventorys = _userRepository.GetInventorys().ToList()
-                        .Where(o => o.FlightNumber == bookingViewModel.FlightNumber && o.StartDate == bookingViewModel.DateOfJourney
-                        && o.startTime == bookingViewModel.BoardingTime && o.NBclassAvailableCount >= setCount).FirstOrDefault();
+                       .Where(o => o.FlightNumber == bookingViewModel.FlightNumber && o.NBclassAvailableCount >= 1 && o.StartDate >= bookingViewModel.DateOfJourney).FirstOrDefault();
                 }
 
                 if( _inventorys ==null)
@@ -68,47 +67,70 @@ namespace Airline.Booking.Controllers
                 string EmailID = bookingViewModel.EmailID;
               
                 int seatNumber = 0;
-                if ((Seattype)bookingViewModel.Seattype == 0)
+                if (Convert.ToInt32(bookingViewModel.Seattype) ==1 )
                 {
-                    seatNumber = _inventorys.BClassCount - _inventorys.BclassAvailCount;
+                    seatNumber =(int) (_inventorys.BClassCount - _inventorys.BclassAvailCount)+1;
                 }
-                else if ((Seattype)bookingViewModel.Seattype == 0)
+                else if (Convert.ToInt32(bookingViewModel.Seattype) == 2)
                 {
-                    seatNumber = _inventorys.NBclassAvailableCount - _inventorys.NBclassAvailableCount;
+                    seatNumber =(int) (_inventorys.NBclassAvailableCount - _inventorys.NBclassAvailableCount)+1;
                 }
-                foreach (UsersViewModel usersViewModel in _usersViewModels)
+                bookings = new Bookings();
+                bookings.TicketID = GenerateticketID();
+                bookings.BookingID = BookingId;
+                bookings.FlightNumber = flightNumber;
+                bookings.DateOfJourney = DateOfJourney;
+                bookings.FromPlace = FromPlace;
+                bookings.ToPlace = ToPlace;
+                bookings.BoardingTime = BoardingTime;
+                bookings.EmailID = EmailID;
+                bookings.UserName = bookingViewModel.UserName;
+                bookings.passportNumber = bookingViewModel.passportNumber;
+                bookings.Age = bookingViewModel.Age;
+                bookings.SeatNumber = seatNumber;
+                bookings.Status = 0;
+                bookings.Statusstr = "Ticket Booked";
+                bookings.CreatedBy = CreatedBy;
+                bookings.CreatedDate = DateTime.Now;
+                bookings.Seattype = bookingViewModel.Seattype;
+                using (var scope = new TransactionScope())
                 {
-                    bookings = new Bookings();
-                    bookings.TicketID= GenerateticketID();
-                    bookings.BookingID = BookingId;
-                    bookings.FlightNumber = flightNumber;
-                    bookings.DateOfJourney = DateOfJourney;
-                    bookings.FromPlace = FromPlace;
-                    bookings.ToPlace = ToPlace;
-                    bookings.BoardingTime = BoardingTime;
-                    bookings.EmailID = EmailID;
-                    bookings.UserName = usersViewModel.UserName;
-                    bookings.passportNumber = usersViewModel.passportNumber;
-                    bookings.Age = usersViewModel.Age;
-                    bookings.SeatNumber = seatNumber;
-                    bookings.Status = 0;
-                    bookings.Statusstr = "Ticket Booked";
-                    bookings.CreatedBy = CreatedBy;
-                    bookings.CreatedDate = DateTime.Now;
-                    bookings.Seattype = bookingViewModel.Seattype;
-                    using (var scope = new TransactionScope())
-                    {
-                        _userRepository.Insert(bookings);
-                        scope.Complete();
-                    }
+                    _userRepository.Insert(bookings);
+                    scope.Complete();
                 }
+                #region
+                //foreach (UsersViewModel usersViewModel in _usersViewModels)
+                //{
+                //    bookings = new Bookings();
+                //    bookings.TicketID= GenerateticketID();
+                //    bookings.BookingID = BookingId;
+                //    bookings.FlightNumber = flightNumber;
+                //    bookings.DateOfJourney = DateOfJourney;
+                //    bookings.FromPlace = FromPlace;
+                //    bookings.ToPlace = ToPlace;
+                //    bookings.BoardingTime = BoardingTime;
+                //    bookings.EmailID = EmailID;
+                //    bookings.UserName = usersViewModel.UserName;
+                //    bookings.passportNumber = usersViewModel.passportNumber;
+                //    bookings.Age = usersViewModel.Age;
+                //    bookings.SeatNumber = seatNumber;
+                //    bookings.Status = 0;
+                //    bookings.Statusstr = "Ticket Booked";
+                //    bookings.CreatedBy = CreatedBy;
+                //    bookings.CreatedDate = DateTime.Now;
+                //    bookings.Seattype = bookingViewModel.Seattype;
+                //    using (var scope = new TransactionScope())
+                //    {
+                //        _userRepository.Insert(bookings);
+                //        scope.Complete();
+                //    }
+                //}
+                #endregion
                 await _topicProducer.Produce(new BookingEvent { FlightNumber =flightNumber,
                     FromPlace=FromPlace,ToPlace=ToPlace,StartDate=DateOfJourney,startTime=BoardingTime,
-                    NumberOfTickets=setCount,Settype= (int) (Seattype)bookingViewModel.Seattype
+                    NumberOfTickets=1,Settype= (int) (Seattype)bookingViewModel.Seattype,tickettype=0
                 });
-               
-
-                return Ok("Booking Done Successfully");
+                return Accepted(new Status { TicketID = bookings.TicketID });
             }
             catch
             {
@@ -200,27 +222,39 @@ namespace Airline.Booking.Controllers
         /// </summary>
         /// <param name="TicketID"></param>
         /// <returns></returns>
-        [HttpPut]
+        [Authorize]
+        [HttpGet]
         [Route("cancel-ticket/{TicketID}")]
-        public IActionResult CancelTicket(string TicketID)
+        public async Task<IActionResult> CancelTicket(string TicketID)
         {
             try
             {
                 IEnumerable<Bookings> bookings = _userRepository.GetBookings().ToList().Where(o => o.TicketID == TicketID).Take(1);
                 foreach (Bookings booking in bookings)
                 {
-                    booking.Status = 0;
-                    booking.Statusstr = "Canceled";
+                    booking.Status = 1;
+                    booking.Statusstr = "Canceled Ticket";
                     using (var scope = new TransactionScope())
                     {
                         _userRepository.UpdateBooking(booking);
                         scope.Complete();
-
+                        await _topicProducer.Produce(new BookingEvent
+                        {
+                            FlightNumber = booking.FlightNumber,
+                            FromPlace = booking.FromPlace,
+                            ToPlace = booking.ToPlace,
+                            StartDate = booking.DateOfJourney,
+                            startTime = booking.BoardingTime,
+                            NumberOfTickets = 1,
+                            Settype = (int)(Seattype)booking.Seattype,
+                            tickettype=1,
+                        });
                     }
                 }
-                return new OkObjectResult(bookings);
+
+                return Accepted(new Status {TicketID=TicketID ,CancelStatus = "cancel"});
             }
-            catch
+            catch(Exception ex)
             {
                 return BadRequest();
             }
@@ -238,7 +272,28 @@ namespace Airline.Booking.Controllers
             {
                 IEnumerable<Bookings> bookings = _userRepository.GetBookings().ToList()
                                                 .Where(o => o.TicketID.ToUpper()== TicketID.ToUpper());
-                return new OkObjectResult(bookings);
+                var flights = (from p in bookings
+
+                               where p.TicketID == TicketID
+                               select new
+                               {
+                                   p.TicketID,
+                                   p.BookingID,
+                                   p.FlightNumber,
+                                   p.DateOfJourney,
+                                   p.BoardingTime,
+                                   p.EmailID,
+                                   p.FromPlace,
+                                   p.ToPlace,
+                                   p.UserName,
+                                   p.passportNumber,
+                                   p.Age,
+                                   TicketType = Enum.GetName(typeof(Seattype), p.Seattype),
+                                   p.Statusstr,
+                                   p.SeatNumber,p.Status
+                                   
+                               }).ToList();
+                return new OkObjectResult(flights);
             }
             catch
             {

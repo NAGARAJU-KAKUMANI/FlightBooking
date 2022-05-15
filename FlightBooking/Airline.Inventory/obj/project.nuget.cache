@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xolwbQQi7u9uGPT7VR5EBiZvM9tzTXhcoTmda1vXrwkcrFG+wFbWZ+HxeaVpNd7iZF5F1PvFw/H5s+ZuePt6qQ==",
+  "dgSpecHash": "2COtg8rWNkkJf8clFRq7SBppgUDlW5ppv6rcoWPXYo+bzQ0x9a47Lvvs7sVhbSUGW0sNwdT8AcvgvXXf6GQEIw==",
   "success": true,
-  "projectFilePath": "D:\\NEW\\FlightBooking-N\\FlightBooking\\Airline.Inventory\\Airline.Inventory.csproj",
+  "projectFilePath": "D:\\NEW\\FlightBooking-N\\FlightBooking-N\\FlightBooking\\Airline.Inventory\\Airline.Inventory.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kakum\\.nuget\\packages\\automatonymous\\5.0.1\\automatonymous.5.0.1.nupkg.sha512",
     "C:\\Users\\kakum\\.nuget\\packages\\confluent.kafka\\1.5.0\\confluent.kafka.1.5.0.nupkg.sha512",

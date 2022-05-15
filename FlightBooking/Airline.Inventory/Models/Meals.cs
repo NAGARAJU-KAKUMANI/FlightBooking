@@ -7,8 +7,8 @@ namespace Airline.Inventory.Models
 {
     public enum Meals
     {
-        None,
-        Veg,
-        NonVeg
+        None=0,
+        Veg=1,
+        NonVeg=2
     }
 }
